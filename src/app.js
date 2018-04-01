@@ -10,8 +10,13 @@ import 'react-dates/lib/css/_datepicker.css';
 import './firebase/firebase';
 import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
+import { addListItem, removeListItem } from './actions/list';
 
 const store = configureStore();
+
+store.subscribe(() => {
+  console.log(store.getState());
+})
 
 const jsx = (
   <Provider store={store}>
@@ -42,3 +47,9 @@ firebase.auth().onAuthStateChanged((user) => {
     history.push('./')
   }
 });
+
+
+store.dispatch(addListItem({ title: 'First thing', category: 'abc', note: 'my note'}));
+const itemOne = store.dispatch(addListItem({title: 'lalala'}));
+const itemTwo = store.dispatch(addListItem({title: 'wash hands'}));
+store.dispatch(removeListItem({ id: itemOne.item.id}));
