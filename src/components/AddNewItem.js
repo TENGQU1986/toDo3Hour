@@ -40,12 +40,13 @@ class AddNewItem extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="content-container">
         {this.state.error !== '' && <p>{this.state.error}</p>}
-        <form onSubmit={this.onSubmit}>
+        <form className="form" onSubmit={this.onSubmit}>
           <input
             type="text"
             placeholder="title"
+            className="text-input"
             value={this.state.title}
             onChange={this.onTitleChange}
             autoFocus
@@ -53,16 +54,18 @@ class AddNewItem extends React.Component {
           <input
             type="text"
             placeholder="category"
+            className="text-input"
             value={this.state.category}
             onChange={this.onCategoryChange}
           />
           <textarea
             placeholder="write some note here(optional)"
+            className="textarea"
             value={this.state.note}
             onChange={this.onNoteChange} 
           />
           <div>
-            <button>Add New</button>
+            <button className="button">Add New</button>
           </div>
         </form>
       </div>
